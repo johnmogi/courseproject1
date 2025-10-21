@@ -1,0 +1,106 @@
+/*
+Theme Name: Twenty Twenty-Five Child
+Description: A child theme for Twenty Twenty-Five with Tailwind CSS integration, clean white theme, and RTL support for Hebrew.
+Author: Your Name
+Template: twentytwentyfive
+Version: 1.0.0
+Text Domain: twentytwentyfive-child
+RTL: true
+*/
+
+/* RTL Support for Hebrew */
+body {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Reset for LTR elements */
+.wp-block-navigation, .wp-block-site-title, .wc-block-mini-cart, .wp-block-woocommerce-customer-account {
+    direction: ltr;
+    text-align: left;
+}
+
+/* Import parent theme styles */
+@import url('../twentytwentyfive/style.css');
+
+/* Clean White Theme for Course/LMS */
+body {
+    background-color: #ffffff;
+    color: #333333;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+}
+
+/* RTL-specific styles */
+[dir="rtl"] .container, [dir="rtl"] .content-area {
+    text-align: right;
+}
+
+[dir="rtl"] .wp-block-group, [dir="rtl"] .wp-block-columns {
+    direction: rtl;
+}
+
+/* Booking form RTL */
+[dir="rtl"] .booking-form-container {
+    text-align: right;
+}
+
+[dir="rtl"] .calendar-wrapper {
+    direction: rtl;
+}
+
+[dir="rtl"] .time-slots-table {
+    direction: rtl;
+}
+
+/* Course/LMS specific styles */
+.course-module {
+    border: 2px solid #3498db;
+    border-radius: 12px;
+    padding: 15px;
+    margin: 10px 0;
+    background-color: #f8f9fa;
+    transition: box-shadow 0.3s ease;
+}
+
+.course-module:hover {
+    box-shadow: 0 4px 20px rgba(52, 152, 219, 0.2);
+}
+
+.lesson-item {
+    background-color: #f8f9fa;
+    border-right: 4px solid #3498db; /* Changed from left for RTL */
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 8px 0 0 8px; /* Adjusted for RTL */
+    transition: background-color 0.3s ease;
+}
+
+.lesson-item:hover {
+    background-color: #e9ecef;
+}
+
+.progress-bar {
+    background-color: #e9ecef;
+    border-radius: 8px;
+    height: 20px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.progress-fill {
+    background: linear-gradient(90deg, #3498db, #5dade2);
+    height: 100%;
+    border-radius: 8px;
+    transition: width 0.3s ease;
+}
+
+/* Additional subtle animations */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
