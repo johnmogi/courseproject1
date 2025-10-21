@@ -33,7 +33,7 @@
     background-color: #007cba;
     color: #fff;
     text-align: center;
-    padding: 32px 16px;
+    padding: 24px 16px 28px;
     margin-bottom: 18px;
 }
 
@@ -72,6 +72,30 @@
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 28px;
+}
+
+.course-landing-page .lead-capture-section {
+    padding: 20px 0 12px;
+}
+
+.course-landing-page .lead-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    align-items: start;
+}
+
+.course-landing-page .lead-copy ul {
+    list-style: disc inside;
+    padding-right: 0;
+}
+
+.course-landing-page .lead-copy ul li {
+    margin-bottom: 8px;
+}
+
+.course-landing-page .lead-form-wrapper .signup-form-container {
+    margin-bottom: 0;
 }
 
 .course-landing-page .schedule-table th,
@@ -162,6 +186,24 @@
     text-decoration: underline;
 }
 
+.course-landing-page .section-figure {
+    margin: 24px auto;
+    max-width: 920px;
+    text-align: center;
+}
+
+.course-landing-page .section-figure img {
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.course-landing-page .section-figure figcaption {
+    margin-top: 10px;
+    font-size: 0.95rem;
+    color: #555;
+}
+
 .course-landing-page .syllabus-section {
     padding: 24px 0;
 }
@@ -232,6 +274,25 @@
     font-size: 2rem;
     font-weight: bold;
     color: rgba(0, 124, 186, 0.2);
+}
+
+.course-landing-page .cta-section {
+    padding: 30px 0 36px;
+    background: linear-gradient(135deg, rgba(0,124,186,0.1), rgba(0,124,186,0.02));
+    text-align: center;
+}
+
+.course-landing-page .cta-section .action-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.course-landing-page .cta-section p {
+    max-width: 720px;
+    margin: 0 auto;
 }
 
 .course-landing-page .session-details-section {
@@ -423,7 +484,7 @@
 
 @media (max-width: 768px) {
     .course-landing-page .hero-section {
-        padding: 40px 15px;
+        padding: 28px 15px 32px;
     }
 
     .course-landing-page .action-buttons {
@@ -435,5 +496,16 @@
     .course-landing-page .btn-secondary,
     .course-landing-page .btn-tertiary {
         width: 100%;
+    }
+
+    .course-landing-page .pricing-grid,
+    .course-landing-page .highlights-grid,
+    .course-landing-page .journey-steps,
+    .course-landing-page .lead-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .course-landing-page .section-figure {
+        margin: 18px auto;
     }
 }

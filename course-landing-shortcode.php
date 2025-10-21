@@ -18,12 +18,35 @@ function course_landing_shortcode($atts) {
                 <h1>🚀 ללמוד לבנות אתרי WordPress עם בינה מלאכותית – בזמן אמת</h1>
                 <p class="hero-subtitle">בוקר חינם ללמידה ותרגול • ערב בתשלום לליווי אישי • קהילה שמקדמת אותך לפרויקטים אמיתיים</p>
                 <div class="hero-summary">
-                    <p>הקורס בהנחיית ג'ון מוגי בנוי כמסלול תלול – מצעד ראשון ב־WordPress ועד פרויקט עצמאי עם ליווי צמוד וקהילה פעילה. אתה מתחיל בחינם, מתמקצע בערב בתשלום, וממשיך לקבוצות פרטיות לפי קצב ההתקדמות שלך.</p>
+                    <p>מסלול מדורג בהנחיית ג'ון מוגי: מתחילים בבוקר חינמי, מעמיקים בערב בתשלום, וממשיכים למסלול פרטי שמוביל לפרויקטים אמיתיים.</p>
                 </div>
                 <div class="cta-buttons">
-                    <a href="#signup" class="btn-primary">להרשמה למפגש הבוקר בחינם</a>
+                    <a href="#lead" class="btn-primary">להרשמה למפגש הבוקר בחינם</a>
                     <a href="#evening" class="btn-secondary">הצטרפות למפגשי הערב – 200 ₪</a>
                     <a href="#private" class="btn-outline">בירור על קבוצות פרטיות</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lead Capture -->
+        <section class="lead-capture-section" id="lead">
+            <div class="container">
+                <div class="lead-grid">
+                    <div class="lead-copy">
+                        <h2>🎯 מתחילים כאן – הרשמה קצרה למפגש הבוקר</h2>
+                        <p>המפגש הראשון חינם לחלוטין וכולל תרגול חי, הקלטות ושאלות בזמן אמת. השאר פרטים ונשמור לך מקום.</p>
+                        <ul>
+                            <li>גישה לטופס משימות ומעקב אחר ההתקדמות.</li>
+                            <li>קישור לקבוצת הוואטסאפ עם עדכונים לפני כל מפגש.</li>
+                            <li>אפשרות מעבר מהירה למסלול הערב והקבוצות הפרטיות.</li>
+                        </ul>
+                    </div>
+                    <div class="lead-form-wrapper">
+                        <div class="signup-form-container">
+                            <h3>הרשמה למפגש הבוקר (חינם)</h3>
+                            <?php display_signup_form(); ?>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -33,6 +56,10 @@ function course_landing_shortcode($atts) {
             <div class="container">
                 <h2>🔀 מודל הלמידה הפרימיום</h2>
                 <p>המסלול משלב למידה פתוחה עם ליווי מתקדם. המטרה: להכניס משתתפים חדשים בקצב נוח, ולאפשר למתקדמים להתקדם לפרויקטים אמיתיים עם תמיכה אישית.</p>
+                <figure class="section-figure">
+                    <img src="https://via.placeholder.com/960x540?text=Freemium+AI+Course" alt="Mockup of the freemium AI WordPress course flow">
+                    <figcaption>המסלול המדורג: התחלה חינמית, העמקה בליווי אישי, והמשך במסגרות פרטיות.</figcaption>
+                </figure>
                 <div class="pricing-grid">
                     <div class="pricing-card free">
                         <div class="tag">🟢 חינם</div>
@@ -135,6 +162,10 @@ function course_landing_shortcode($atts) {
                 <h2>🧱 המפגש הראשון – הבסיס שלך לפרודוקטיביות</h2>
                 <p><strong>נושא:</strong> הקמה מהירה, Debug מקצועי ו־AI שמסביר לך כל שורה.</p>
                 <p><strong>משך:</strong> שלוש שעות עם דגש על יישום בזמן אמת.</p>
+                <figure class="section-figure">
+                    <img src="https://via.placeholder.com/960x540?text=Live+Workshop" alt="Placeholder image of a live WordPress workshop">
+                    <figcaption>סביבת פיתוח חיה: עובדים יחד, מתקנים תקלות ומיישמים מיידית.</figcaption>
+                </figure>
                 <div class="highlight-box">
                     <p><strong>מה עושים ביחד?</strong></p>
                     <ul>
@@ -151,6 +182,10 @@ function course_landing_shortcode($atts) {
         <section class="syllabus-section" id="syllabus">
             <div class="container">
                 <h2>🗺️ סילבוס מלא – 8 מפגשים חיים</h2>
+                <figure class="section-figure">
+                    <img src="https://via.placeholder.com/960x360?text=Course+Journey" alt="Placeholder image of the course journey timeline">
+                    <figcaption>מסלול הלמידה המלא – מיסודות הפרויקט ועד הצגת פרויקט סיום.</figcaption>
+                </figure>
                 <table class="syllabus-table">
                     <thead>
                         <tr>
@@ -289,23 +324,6 @@ function course_landing_shortcode($atts) {
             </div>
         </section>
 
-        <!-- Call to Action Section -->
-        <section class="cta-section" id="signup">
-            <div class="container">
-                <h2>⚡ מתחילים עכשיו</h2>
-                <p>הקורס נבנה כדי למשוך אותך פנימה, להוכיח מקצועיות ולהשאיר אותך עם פרויקט חי. המפגש הראשון חינם – ומשם אתה בוחר כמה עמוק לצלול.</p>
-
-                <div class="signup-form-container">
-                    <h3>הרשמה למפגש הראשון (חינם)</h3>
-                    <?php display_signup_form(); ?>
-                </div>
-
-                <div class="action-buttons">
-                    <a href="https://wa.me/your-number" class="btn-secondary">לשאלות ולתיאום ערב בתשלום</a>
-                    <a href="https://wa.me/your-number" class="btn-tertiary">בירור על קבוצות פרטיות</a>
-                </div>
-            </div>
-        </section>
     </div>
     <?php
     return ob_get_clean();
