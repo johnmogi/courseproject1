@@ -14,16 +14,24 @@ function course_landing_shortcode($atts) {
         <!-- Hero Section -->
         <section class="hero-section">
             <div class="container">
-                <span class="hero-tag">Freemium Learning Path</span>
-                <h1>🚀 ללמוד לבנות אתרי WordPress עם בינה מלאכותית – בזמן אמת</h1>
-                <p class="hero-subtitle">בוקר חינם ללמידה ותרגול • ערב בתשלום לליווי אישי • קהילה שמקדמת אותך לפרויקטים אמיתיים</p>
-                <div class="hero-summary">
-                    <p>מסלול מדורג בהנחיית ג'ון מוגי: מתחילים בבוקר חינמי, מעמיקים בערב בתשלום, וממשיכים למסלול פרטי שמוביל לפרויקטים אמיתיים.</p>
-                </div>
-                <div class="cta-buttons">
-                    <a href="#lead" class="btn-primary">להרשמה למפגש הבוקר בחינם</a>
-                    <a href="#evening" class="btn-secondary">הצטרפות למפגשי הערב – 200 ₪</a>
-                    <a href="#private" class="btn-outline">בירור על קבוצות פרטיות</a>
+                <div class="hero-inner">
+                    <div class="hero-copy">
+                        <span class="hero-tag">Freemium Learning Path</span>
+                        <h1>🚀 ללמוד לבנות אתרי WordPress עם בינה מלאכותית – בזמן אמת</h1>
+                        <p class="hero-subtitle">בוקר חינם ללמידה ותרגול • ערב בתשלום לליווי אישי • קהילה שמקדמת אותך לפרויקטים אמיתיים</p>
+                        <div class="hero-summary">
+                            <p>מסלול מדורג בהנחיית ג'ון מוגי: מתחילים בבוקר חינמי, מעמיקים בערב בתשלום, וממשיכים למסלול פרטי שמוביל לפרויקטים אמיתיים.</p>
+                        </div>
+                        <div class="cta-buttons">
+                            <a href="#lead" class="btn-primary">להרשמה למפגש הבוקר בחינם</a>
+                            <a href="https://wa.me/your-number" class="btn-whatsapp">שיחה מהירה בוואטסאפ</a>
+                            <a href="#model" class="btn-outline">לגלות את מודל הלמידה</a>
+                        </div>
+                    </div>
+                    <figure class="hero-media">
+                        <img src="https://via.placeholder.com/720x540?text=AI+WordPress+Workshop" alt="Placeholder image of an AI-powered WordPress workshop">
+                        <figcaption>שיעורים חיים, תרגול בלייב וקהילה שמקדמת לך את הפרויקט הבא.</figcaption>
+                    </figure>
                 </div>
             </div>
         </section>
