@@ -37,13 +37,6 @@
     margin-bottom: 18px;
 }
 
-.course-landing-page .hero-inner {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 32px;
-    align-items: center;
-}
-
 .course-landing-page .hero-copy {
     text-align: right;
 }
@@ -66,10 +59,6 @@
     gap: 16px;
 }
 
-.course-landing-page .hero-copy .cta-buttons {
-    justify-content: flex-start;
-}
-
 .course-landing-page .btn-outline {
     border: 2px solid #ffffff;
     color: #ffffff;
@@ -78,40 +67,6 @@
 
 .course-landing-page .btn-outline:hover {
     background-color: rgba(255, 255, 255, 0.12);
-}
-
-.course-landing-page .btn-whatsapp {
-    background-color: #25d366;
-    color: #ffffff;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.course-landing-page .btn-whatsapp::before {
-    content: '\f232';
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
-}
-
-.course-landing-page .btn-whatsapp:hover {
-    background-color: #1ebe5d;
-}
-
-.course-landing-page .hero-media img {
-    width: 100%;
-    border-radius: 18px;
-    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.18);
-}
-
-.course-landing-page .hero-media figcaption {
-    margin-top: 12px;
-    font-size: 0.95rem;
-    color: rgba(255, 255, 255, 0.85);
-}
-
-.course-landing-page .hero-media {
-    text-align: center;
 }
 
 .course-landing-page .schedule-table,
@@ -235,24 +190,6 @@
     text-decoration: underline;
 }
 
-.course-landing-page .section-figure {
-    margin: 24px auto;
-    max-width: 920px;
-    text-align: center;
-}
-
-.course-landing-page .section-figure img {
-    width: 100%;
-    border-radius: 16px;
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
-}
-
-.course-landing-page .section-figure figcaption {
-    margin-top: 10px;
-    font-size: 0.95rem;
-    color: #555;
-}
-
 .course-landing-page .syllabus-section {
     padding: 24px 0;
 }
@@ -331,13 +268,6 @@
     text-align: center;
 }
 
-.course-landing-page .cta-inner {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 28px;
-    align-items: center;
-}
-
 .course-landing-page .cta-copy {
     text-align: right;
 }
@@ -353,19 +283,6 @@
 .course-landing-page .cta-section p {
     max-width: 720px;
     margin: 0 auto;
-}
-
-.course-landing-page .cta-media img {
-    width: 100%;
-    border-radius: 16px;
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
-}
-
-.course-landing-page .cta-media figcaption {
-    margin-top: 12px;
-    font-size: 0.95rem;
-    color: #415a6b;
-    text-align: center;
 }
 
 .course-landing-page .session-details-section {
@@ -574,13 +491,7 @@
     .course-landing-page .pricing-grid,
     .course-landing-page .highlights-grid,
     .course-landing-page .journey-steps,
-    .course-landing-page .lead-grid,
-    .course-landing-page .hero-inner,
-    .course-landing-page .cta-inner {
+    .course-landing-page .lead-grid {
         grid-template-columns: 1fr;
-    }
-
-    .course-landing-page .section-figure {
-        margin: 18px auto;
     }
 }

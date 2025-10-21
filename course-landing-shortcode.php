@@ -24,13 +24,12 @@ function course_landing_shortcode($atts) {
                         </div>
                         <div class="cta-buttons">
                             <a href="#lead" class="btn-primary">להרשמה למפגש הבוקר בחינם</a>
-                            <a href="https://wa.me/your-number" class="btn-whatsapp">שיחה מהירה בוואטסאפ</a>
-                            <a href="#model" class="btn-outline">לגלות את מודל הלמידה</a>
+                            <a href="#contact" class="btn-secondary">השאירו מספר טלפון</a>
                         </div>
                     </div>
-                    <figure class="hero-media">
-                        <img src="https://via.placeholder.com/720x540?text=AI+WordPress+Workshop" alt="Placeholder image of an AI-powered WordPress workshop">
-                        <figcaption>שיעורים חיים, תרגול בלייב וקהילה שמקדמת לך את הפרויקט הבא.</figcaption>
+                    <figure class="hero-figure">
+                        <img src="https://via.placeholder.com/860x520?text=AI+WordPress+Workshop" alt="Placeholder image of an AI-powered WordPress workshop">
+                        <figcaption>תיעוד מהמפגשים החיים – בנייה, תיקון והאצה של אתרי WordPress בעזרת AI.</figcaption>
                     </figure>
                 </div>
             </div>
@@ -64,10 +63,6 @@ function course_landing_shortcode($atts) {
             <div class="container">
                 <h2>🔀 מודל הלמידה הפרימיום</h2>
                 <p>המסלול משלב למידה פתוחה עם ליווי מתקדם. המטרה: להכניס משתתפים חדשים בקצב נוח, ולאפשר למתקדמים להתקדם לפרויקטים אמיתיים עם תמיכה אישית.</p>
-                <figure class="section-figure">
-                    <img src="https://via.placeholder.com/960x540?text=Freemium+AI+Course" alt="Mockup of the freemium AI WordPress course flow">
-                    <figcaption>המסלול המדורג: התחלה חינמית, העמקה בליווי אישי, והמשך במסגרות פרטיות.</figcaption>
-                </figure>
                 <div class="pricing-grid">
                     <div class="pricing-card free">
                         <div class="tag">🟢 חינם</div>
@@ -170,10 +165,6 @@ function course_landing_shortcode($atts) {
                 <h2>🧱 המפגש הראשון – הבסיס שלך לפרודוקטיביות</h2>
                 <p><strong>נושא:</strong> הקמה מהירה, Debug מקצועי ו־AI שמסביר לך כל שורה.</p>
                 <p><strong>משך:</strong> שלוש שעות עם דגש על יישום בזמן אמת.</p>
-                <figure class="section-figure">
-                    <img src="https://via.placeholder.com/960x540?text=Live+Workshop" alt="Placeholder image of a live WordPress workshop">
-                    <figcaption>סביבת פיתוח חיה: עובדים יחד, מתקנים תקלות ומיישמים מיידית.</figcaption>
-                </figure>
                 <div class="highlight-box">
                     <p><strong>מה עושים ביחד?</strong></p>
                     <ul>
@@ -190,10 +181,6 @@ function course_landing_shortcode($atts) {
         <section class="syllabus-section" id="syllabus">
             <div class="container">
                 <h2>🗺️ סילבוס מלא – 8 מפגשים חיים</h2>
-                <figure class="section-figure">
-                    <img src="https://via.placeholder.com/960x360?text=Course+Journey" alt="Placeholder image of the course journey timeline">
-                    <figcaption>מסלול הלמידה המלא – מיסודות הפרויקט ועד הצגת פרויקט סיום.</figcaption>
-                </figure>
                 <table class="syllabus-table">
                     <thead>
                         <tr>
