@@ -32,12 +32,17 @@
 .course-landing-page .hero-section {
     background-color: #007cba;
     color: #fff;
-    text-align: center;
-    padding: 24px 16px 28px;
-    margin-bottom: 18px;
+    padding: 32px 16px 36px;
+    margin-bottom: 24px;
 }
 
-.course-landing-page .hero-copy {
+.course-landing-page .hero-card {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 36px 32px;
+    border-radius: 32px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
     text-align: right;
 }
 
@@ -47,26 +52,49 @@
 }
 
 .course-landing-page .hero-summary {
-    max-width: 860px;
-    margin: 0 auto 24px;
+    max-width: 720px;
+    margin: 0 0 20px auto;
     font-size: 1.04rem;
 }
 
-.course-landing-page .cta-buttons {
+.course-landing-page .hero-mini-form {
+    margin-top: 24px;
+}
+
+.course-landing-page .hero-lead-form {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 16px;
+    gap: 12px;
+    align-items: center;
 }
 
-.course-landing-page .btn-outline {
-    border: 2px solid #ffffff;
+.course-landing-page .hero-lead-form input[type="tel"] {
+    flex: 1 1 260px;
+    padding: 14px 18px;
+    border-radius: 999px;
+    border: none;
+    font-size: 1rem;
+}
+
+.course-landing-page .hero-lead-form .hero-submit-btn {
+    background-color: #111827;
     color: #ffffff;
-    background: transparent;
+    border: none;
+    border-radius: 999px;
+    padding: 14px 28px;
+    font-weight: 700;
+    cursor: pointer;
 }
 
-.course-landing-page .btn-outline:hover {
-    background-color: rgba(255, 255, 255, 0.12);
+.course-landing-page .hero-lead-form .hero-submit-btn:hover {
+    background-color: #0a0f1d;
+}
+
+.course-landing-page .hero-note,
+.course-landing-page .mini-form-note {
+    font-size: 0.9rem;
+    margin-top: 8px;
+    color: rgba(255, 255, 255, 0.85);
 }
 
 .course-landing-page .schedule-table,
@@ -100,6 +128,16 @@
 
 .course-landing-page .lead-form-wrapper .signup-form-container {
     margin-bottom: 0;
+}
+
+.course-landing-page .recording-note {
+    margin-top: 16px;
+    font-size: 0.92rem;
+    color: #0f172a;
+    background-color: rgba(15, 23, 42, 0.08);
+    padding: 10px 14px;
+    border-radius: 10px;
+    display: inline-block;
 }
 
 .course-landing-page .schedule-table th,
@@ -190,6 +228,13 @@
     text-decoration: underline;
 }
 
+.course-landing-page .signup-form textarea {
+    border-radius: 8px;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    font-family: inherit;
+}
+
 .course-landing-page .syllabus-section {
     padding: 24px 0;
 }
@@ -266,6 +311,18 @@
     padding: 30px 0 36px;
     background: linear-gradient(135deg, rgba(0,124,186,0.1), rgba(0,124,186,0.02));
     text-align: center;
+}
+
+.course-landing-page .cta-card {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 32px;
+    border-radius: 24px;
+    box-shadow: 0 16px 34px rgba(15, 23, 42, 0.12);
+    text-align: right;
+    display: grid;
+    gap: 24px;
 }
 
 .course-landing-page .cta-copy {
@@ -477,21 +534,144 @@
         padding: 28px 15px 32px;
     }
 
-    .course-landing-page .action-buttons {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .course-landing-page .btn-primary,
-    .course-landing-page .btn-secondary,
-    .course-landing-page .btn-tertiary {
-        width: 100%;
-    }
-
     .course-landing-page .pricing-grid,
     .course-landing-page .highlights-grid,
     .course-landing-page .journey-steps,
     .course-landing-page .lead-grid {
         grid-template-columns: 1fr;
+    }
+
+    .course-landing-page .hero-card {
+        padding: 28px 22px;
+    }
+
+    .course-landing-page .hero-lead-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .course-landing-page .hero-lead-form input[type="tel"],
+    .course-landing-page .hero-lead-form .hero-submit-btn {
+        width: 100%;
+    }
+
+    .course-landing-page .cta-card {
+        padding: 24px;
+    }
+}
+
+.course-landing-page .appointments-section {
+    padding: 32px 0;
+    background-color: #f1f5f9;
+}
+
+.course-landing-page .appointments-section .appointments-intro {
+    max-width: 860px;
+    margin: 0 auto 20px;
+}
+
+.course-landing-page .appointments-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.course-landing-page .appointment-card {
+    background-color: #ffffff;
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.course-landing-page .appointment-card header h3 {
+    margin: 0 0 6px;
+}
+
+.course-landing-page .appointment-date {
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.course-landing-page .appointment-meta {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.95rem;
+    color: #1f2937;
+}
+
+.course-landing-page .appointment-meta li {
+    margin-bottom: 6px;
+}
+
+.course-landing-page .appointment-actions {
+    margin-top: auto;
+    display: flex;
+    gap: 10px;
+}
+
+.course-landing-page .appointments-empty,
+.course-landing-page .appointments-footer {
+    margin-top: 32px;
+    text-align: center;
+}
+
+.course-landing-page .btn-primary,
+.course-landing-page .btn-secondary,
+.course-landing-page .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border-radius: 999px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.course-landing-page .btn-primary {
+    background-color: #007cba;
+    color: #ffffff;
+}
+
+.course-landing-page .btn-primary:hover {
+    background-color: #036aa1;
+}
+
+.course-landing-page .btn-secondary {
+    background-color: #e2e8f0;
+    color: #0f172a;
+}
+
+.course-landing-page .btn-secondary:hover {
+    background-color: #cbd5e1;
+}
+
+.course-landing-page .btn-outline {
+    border: 1px solid #0f172a;
+    color: #0f172a;
+    background: transparent;
+}
+
+.course-landing-page .btn-outline:hover {
+    background-color: rgba(15, 23, 42, 0.08);
+}
+
+@media (max-width: 1024px) {
+    .course-landing-page .appointments-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .course-landing-page .appointments-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .course-landing-page .appointment-card {
+        padding: 20px;
     }
 }

@@ -8,29 +8,39 @@
 require_once get_stylesheet_directory() . '/includes/class-signup-form.php';
 
 function course_landing_shortcode($atts) {
+    $appointments_query = new WP_Query(array(
+        'post_type'      => 'course_appointment',
+        'posts_per_page' => 6,
+        'meta_key'       => 'appointment_datetime',
+        'orderby'        => 'meta_value_num',
+        'order'          => 'ASC',
+        'meta_query'     => array(
+            array(
+                'key'     => 'appointment_datetime',
+                'value'   => current_time('timestamp'),
+                'compare' => '>=',
+                'type'    => 'NUMERIC',
+            ),
+        ),
+    ));
+
     ob_start();
     ?>
     <div class="course-landing-page">
         <!-- Hero Section -->
         <section class="hero-section">
             <div class="container">
-                <div class="hero-inner">
-                    <div class="hero-copy">
-                        <span class="hero-tag">Freemium Learning Path</span>
-                        <h1>🚀 ללמוד לבנות אתרי WordPress עם בינה מלאכותית – בזמן אמת</h1>
-                        <p class="hero-subtitle">בוקר חינם ללמידה ותרגול • ערב בתשלום לליווי אישי • קהילה שמקדמת אותך לפרויקטים אמיתיים</p>
-                        <div class="hero-summary">
-                            <p>מסלול מדורג בהנחיית ג'ון מוגי: מתחילים בבוקר חינמי, מעמיקים בערב בתשלום, וממשיכים למסלול פרטי שמוביל לפרויקטים אמיתיים.</p>
-                        </div>
-                        <div class="cta-buttons">
-                            <a href="#lead" class="btn-primary">להרשמה למפגש הבוקר בחינם</a>
-                            <a href="#contact" class="btn-secondary">השאירו מספר טלפון</a>
-                        </div>
+                <div class="hero-card">
+                    <span class="hero-tag">Freemium Learning Path</span>
+                    <h1>🚀 ללמוד לבנות אתרי WordPress עם בינה מלאכותית – בזמן אמת</h1>
+                    <p class="hero-subtitle">בוקר חינם ללמידה ותרגול • ערב בתשלום לליווי אישי • קהילה שמקדמת אותך לפרויקטים אמיתיים</p>
+                    <div class="hero-summary">
+                        <p>מסלול מדורג בהנחיית ג'ון מוגי: מתחילים בבוקר חינמי, מעמיקים בערב בתשלום, וממשיכים למסלול פרטי שמוביל לפרויקטים אמיתיים. הצטרפו עכשיו, התחילו חינם — ללא אותיות קטנות.</p>
                     </div>
-                    <figure class="hero-figure">
-                        <img src="https://via.placeholder.com/860x520?text=AI+WordPress+Workshop" alt="Placeholder image of an AI-powered WordPress workshop">
-                        <figcaption>תיעוד מהמפגשים החיים – בנייה, תיקון והאצה של אתרי WordPress בעזרת AI.</figcaption>
-                    </figure>
+                    <div class="hero-mini-form" id="hero-form">
+                        <?php display_hero_lead_form(); ?>
+                    </div>
+                    <p class="hero-note">מתחילים בחינם, ולומדים בלייב עם קהילה שתומכת בך.</p>
                 </div>
             </div>
         </section>
@@ -156,6 +166,7 @@ function course_landing_shortcode($atts) {
                         </tr>
                     </tbody>
                 </table>
+                <p class="recording-note">* המפגש החינמי משודר ומוקלט. ההצטרפות מהווה אישור לשיתוף ההקלטה בקהילה ובמאגר הקורס.</p>
             </div>
         </section>
 
@@ -307,6 +318,55 @@ function course_landing_shortcode($atts) {
             </div>
         </section>
 
+        <!-- Appointments Section -->
+        <section class="appointments-section" id="appointments">
+            <div class="container">
+                <h2>📆 קביעת מפגש המשך</h2>
+                <p class="appointments-intro">בחרו את המועד שמתאים לכם ונצרף אתכם למפגש הערב או לקבוצה הפרטית המתאימה. אם אין מועד שמתאים כרגע – מלאו את הטופס ונחזור אליכם עם הצעות חדשות.</p>
+
+                <?php if ($appointments_query->have_posts()) : ?>
+                    <div class="appointments-grid">
+                        <?php while ($appointments_query->have_posts()) : $appointments_query->the_post();
+                            $appointment_id = get_the_ID();
+                            $timestamp      = (int) get_post_meta($appointment_id, 'appointment_datetime', true);
+                            $duration       = (int) get_post_meta($appointment_id, 'appointment_duration', true);
+                            $mode           = get_post_meta($appointment_id, 'appointment_mode', true);
+                            $join_link      = get_post_meta($appointment_id, 'appointment_join_link', true);
+
+                            $date_label = $timestamp ? date_i18n('l · j.n', $timestamp) : __('תאריך יתעדכן', 'twentytwentyfive-child');
+                            $time_label = $timestamp ? date_i18n('H:i', $timestamp) : '';
+                        ?>
+                            <article class="appointment-card">
+                                <header>
+                                    <h3><?php echo esc_html(get_the_title()); ?></h3>
+                                    <p class="appointment-date"><?php echo esc_html($date_label); ?><?php echo $time_label ? ' · ' . esc_html($time_label) : ''; ?></p>
+                                </header>
+                                <ul class="appointment-meta">
+                                    <?php if ($mode) : ?><li><strong><?php _e('מיקום:', 'twentytwentyfive-child'); ?></strong> <?php echo esc_html($mode); ?></li><?php endif; ?>
+                                    <?php if ($duration) : ?><li><strong><?php _e('משך:', 'twentytwentyfive-child'); ?></strong> <?php echo esc_html($duration); ?> דק'</li><?php endif; ?>
+                                    <li><strong><?php _e('סטטוס:', 'twentytwentyfive-child'); ?></strong> <?php _e('פתוח להצטרפות', 'twentytwentyfive-child'); ?></li>
+                                </ul>
+                                <div class="appointment-actions">
+                                    <?php if ($join_link) : ?>
+                                        <a href="<?php echo esc_url($join_link); ?>" target="_blank" rel="noopener" class="btn-primary">להצטרפות למפגש</a>
+                                    <?php else : ?>
+                                        <a href="#contact" class="btn-secondary">תאמו איתנו בטופס</a>
+                                    <?php endif; ?>
+                                </div>
+                            </article>
+                        <?php endwhile; ?>
+                    </div>
+                <?php else : ?>
+                    <p class="appointments-empty">אין כרגע מועד פתוח להצטרפות. השאירו פרטים בטופס ונעדכן אתכם מייד כשהתאריך הבא ייפתח.</p>
+                <?php endif; ?>
+
+                <div class="appointments-footer">
+                    <p>צריך שעה אחרת או מפגש פרטני? מלאו את הטופס בתחתית העמוד ונחזור אליכם עם הצעה מותאמת.</p>
+                    <a href="#contact" class="btn-outline">למילוי טופס התאמה אישי</a>
+                </div>
+            </div>
+        </section>
+
         <!-- Community Section -->
         <section class="community-section">
             <div class="container">
@@ -321,9 +381,9 @@ function course_landing_shortcode($atts) {
 
     </div>
     <?php
+    wp_reset_postdata();
     return ob_get_clean();
 }
 
 // Register the shortcode
 add_shortcode('course_landing', 'course_landing_shortcode');
-?>

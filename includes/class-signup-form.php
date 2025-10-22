@@ -12,9 +12,11 @@ function handle_signup_form_submission() {
         }
 
         // Validate required fields
-        $name = sanitize_text_field($_POST['name']);
+        $name  = sanitize_text_field($_POST['name']);
         $email = sanitize_email($_POST['email']);
         $phone = sanitize_text_field($_POST['phone']);
+        $notes = isset($_POST['notes']) ? sanitize_textarea_field($_POST['notes']) : '';
+        $source = isset($_POST['form_source']) ? sanitize_text_field($_POST['form_source']) : 'course-landing';
 
         if (empty($name) || empty($email) || empty($phone)) {
             echo '<div class="error-message">Please fill in all fields.</div>';
@@ -26,14 +28,25 @@ function handle_signup_form_submission() {
             return;
         }
 
-        // Process signup (e.g., save to database or send email)
-        // For demo, we'll just show a success message
-        echo '<div class="success-message">Thank you for signing up! We\'ll be in touch soon.</div>';
+        $post_id = wp_insert_post(array(
+            'post_type'   => 'course_signup',
+            'post_status' => 'publish',
+            'post_title'  => $name . ' – ' . current_time('Y-m-d H:i'),
+            'meta_input'  => array(
+                'signup_name'   => $name,
+                'signup_email'  => $email,
+                'signup_phone'  => $phone,
+                'signup_notes'  => $notes,
+                'signup_source' => $source,
+            ),
+        ));
 
-        // In a real implementation, you might:
-        // - Save to a custom table or use a plugin like Mailchimp
-        // - Send confirmation email
-        // - Add to a mailing list
+        if (is_wp_error($post_id)) {
+            echo '<div class="error-message">אירעה שגיאה בשמירת הפרטים. נסו שוב.</div>';
+            return;
+        }
+
+        echo '<div class="success-message">תודה! הפרטים נקלטו ונחזור אליך עם כל המידע.</div>';
     }
 }
 add_action('init', 'handle_signup_form_submission');
@@ -59,13 +72,37 @@ function display_signup_form() {
             <input type="tel" id="phone" name="phone" required>
         </div>
 
+        <div class="form-group">
+            <label for="notes">כמה מילים על המטרה שלך:</label>
+            <textarea id="notes" name="notes" rows="3" placeholder="למשל: אתר ללקוח קיים, פרויקט חדש, או חיזוק יכולת עם AI"></textarea>
+        </div>
+
         <!-- Honeypot field (hidden from users) -->
         <div class="honeypot" style="display: none;">
             <label for="website">Website (leave empty):</label>
             <input type="text" id="website" name="website">
         </div>
 
+        <input type="hidden" name="form_source" value="course-landing" />
         <button type="submit" name="signup_submit" class="signup-btn">הרשמה למפגש הראשון – חינם (Sign Up for Free Session)</button>
+    </form>
+    <?php
+}
+
+function display_hero_lead_form() {
+    ?>
+    <form method="post" action="" class="hero-lead-form">
+        <label class="sr-only" for="hero-phone">מספר טלפון</label>
+        <input type="tel" id="hero-phone" name="phone" placeholder="מספר טלפון" required>
+        <input type="hidden" name="name" value="חבר קהילה (שם יגיע בהמשך)">
+        <input type="hidden" name="email" value="pending@example.com">
+        <input type="hidden" name="form_source" value="hero-mini-form">
+        <div class="honeypot" style="display:none;">
+            <label for="hero-website">Website (leave empty):</label>
+            <input type="text" id="hero-website" name="website">
+        </div>
+        <button type="submit" name="signup_submit" class="hero-submit-btn">להתחיל חינם – ללא התחייבות</button>
+        <p class="mini-form-note">* נחזור אליך עם פרטי ההתחברות למפגש הקרוב.</p>
     </form>
     <?php
 }
