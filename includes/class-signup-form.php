@@ -42,11 +42,21 @@ function handle_signup_form_submission() {
         ));
 
         if (is_wp_error($post_id)) {
-            echo '<div class="error-message">אירעה שגיאה בשמירת הפרטים. נסו שוב.</div>';
-            return;
+            wp_safe_redirect(add_query_arg('signup', 'error', wp_get_referer()));
+            exit;
         }
 
-        echo '<div class="success-message">תודה! הפרטים נקלטו ונחזור אליך עם כל המידע.</div>';
+        $redirect_url = wp_get_referer() ? wp_get_referer() : home_url('/');
+        $redirect_url = add_query_arg('signup', 'success', $redirect_url);
+        if (isset($_POST['form_source']) && $_POST['form_source'] === 'hero-mini-form') {
+            $redirect_url = add_query_arg('focus', 'hero-form', $redirect_url);
+        } elseif (isset($_POST['form_source']) && $_POST['form_source'] === 'appointment-modal') {
+            $redirect_url = add_query_arg('focus', 'appointments', $redirect_url);
+        } else {
+            $redirect_url = add_query_arg('focus', 'contact', $redirect_url);
+        }
+        wp_safe_redirect($redirect_url);
+        exit;
     }
 }
 add_action('init', 'handle_signup_form_submission');
@@ -55,8 +65,15 @@ add_action('init', 'handle_signup_form_submission');
  * Display the sign-up form
  */
 function display_signup_form() {
+    $show_success = isset($_GET['signup']) && $_GET['signup'] === 'success' && (!isset($_GET['focus']) || $_GET['focus'] === 'contact');
+    $show_error   = isset($_GET['signup']) && $_GET['signup'] === 'error';
     ?>
     <form method="post" action="" class="signup-form">
+        <?php if ($show_success) : ?>
+            <div class="success-message">תודה! הפרטים נקלטו ונזמין אותך למפגש הקרוב.</div>
+        <?php elseif ($show_error) : ?>
+            <div class="error-message">אירעה תקלה בשמירת הפרטים. נסה/י שוב.</div>
+        <?php endif; ?>
         <div class="form-group">
             <label for="name">שם מלא (Full Name):</label>
             <input type="text" id="name" name="name" required>
@@ -90,8 +107,15 @@ function display_signup_form() {
 }
 
 function display_hero_lead_form() {
+    $show_success = isset($_GET['signup']) && $_GET['signup'] === 'success' && isset($_GET['focus']) && $_GET['focus'] === 'hero-form';
+    $show_error   = isset($_GET['signup']) && $_GET['signup'] === 'error';
     ?>
     <form method="post" action="" class="hero-lead-form">
+        <?php if ($show_success) : ?>
+            <div class="success-message">קיבלנו את מספר הטלפון ונחזור עם פרטי ההתחברות.</div>
+        <?php elseif ($show_error) : ?>
+            <div class="error-message">אירעה תקלה בשמירת הפרטים. נסו שוב.</div>
+        <?php endif; ?>
         <label class="sr-only" for="hero-phone">מספר טלפון</label>
         <input type="tel" id="hero-phone" name="phone" placeholder="מספר טלפון" required>
         <input type="hidden" name="name" value="חבר קהילה (שם יגיע בהמשך)">
@@ -108,8 +132,15 @@ function display_hero_lead_form() {
 }
 
 function display_appointment_modal_form() {
+    $show_success = isset($_GET['signup']) && $_GET['signup'] === 'success' && isset($_GET['focus']) && $_GET['focus'] === 'appointments';
+    $show_error   = isset($_GET['signup']) && $_GET['signup'] === 'error';
     ?>
     <form method="post" action="" class="appointment-modal-form">
+        <?php if ($show_success) : ?>
+            <div class="success-message">תודה! קיבלנו את הבקשה ונחזור עם מועד מותאם.</div>
+        <?php elseif ($show_error) : ?>
+            <div class="error-message">אירעה תקלה בשמירת הפרטים. נסו שוב.</div>
+        <?php endif; ?>
         <div class="form-group">
             <label for="modal-name">שם מלא</label>
             <input type="text" id="modal-name" name="name" placeholder="שם מלא" required>
