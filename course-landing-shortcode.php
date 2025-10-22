@@ -320,7 +320,7 @@ function course_landing_shortcode($atts) {
         </section>
 
         <!-- Appointments Section -->
-        <section class="appointments-section" id="appointments">
+        <section class="appointments-section" id="appointments" data-appointments>
             <div class="container">
                 <h2>📆 קביעת מפגש המשך</h2>
                 <p class="appointments-intro">בחרו את המועד שמתאים לכם ונצרף אתכם למפגש הערב או לקבוצה הפרטית המתאימה. אם אין מועד שמתאים כרגע – מלאו את הטופס ונחזור אליכם עם הצעות חדשות.</p>
@@ -351,7 +351,7 @@ function course_landing_shortcode($atts) {
                                     <?php if ($join_link) : ?>
                                         <a href="<?php echo esc_url($join_link); ?>" target="_blank" rel="noopener" class="btn-primary">להצטרפות למפגש</a>
                                     <?php else : ?>
-                                        <button class="btn-primary" data-appointment-title="<?php echo esc_attr(get_the_title()); ?>" data-appointment-time="<?php echo esc_attr($date_label . ($time_label ? ' · ' . $time_label : '')); ?>" data-open-modal="appointment">לתאם שיחה</button>
+                                        <button class="btn-primary" data-appointment-title="<?php echo esc_attr(get_the_title()); ?>" data-appointment-time="<?php echo esc_attr($date_label . ($time_label ? ' · ' . $time_label : '')); ?>" data-appointment-id="<?php echo esc_attr($appointment_id); ?>" data-open-modal="appointment">לתאם שיחה</button>
                                         <a href="#contact" class="btn-secondary">להשאיר פרטים מלאים</a>
                                     <?php endif; ?>
                                 </div>

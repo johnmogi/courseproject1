@@ -4,6 +4,21 @@
  * Handles form submission and validation
  */
 
+function course_landing_get_redirect_base_url($source = '') {
+    $default_url = home_url('/my-area/');
+
+    $dashboard_page = get_page_by_path('my-area');
+    if (!$dashboard_page || $dashboard_page->post_status !== 'publish') {
+        if (isset($_SERVER['HTTP_REFERER']) && $_SERVER['HTTP_REFERER']) {
+            $default_url = esc_url_raw($_SERVER['HTTP_REFERER']);
+        } else {
+            $default_url = home_url('/');
+        }
+    }
+
+    return apply_filters('course_landing_redirect_base_url', $default_url, $source);
+}
+
 function handle_signup_form_submission() {
     if (isset($_POST['signup_submit'])) {
         // Check honeypot (should be empty)
@@ -42,19 +57,42 @@ function handle_signup_form_submission() {
         ));
 
         if (is_wp_error($post_id)) {
-            wp_safe_redirect(add_query_arg('signup', 'error', wp_get_referer()));
+            $error_redirect = wp_get_referer() ? wp_get_referer() : course_landing_get_redirect_base_url($source);
+            $error_redirect = add_query_arg('signup', 'error', $error_redirect);
+            wp_safe_redirect($error_redirect);
             exit;
         }
 
-        $redirect_url = wp_get_referer() ? wp_get_referer() : home_url('/');
-        $redirect_url = add_query_arg('signup', 'success', $redirect_url);
-        if (isset($_POST['form_source']) && $_POST['form_source'] === 'hero-mini-form') {
-            $redirect_url = add_query_arg('focus', 'hero-form', $redirect_url);
-        } elseif (isset($_POST['form_source']) && $_POST['form_source'] === 'appointment-modal') {
-            $redirect_url = add_query_arg('focus', 'appointments', $redirect_url);
-        } else {
-            $redirect_url = add_query_arg('focus', 'contact', $redirect_url);
+        $focus = 'contact';
+        if ($source === 'hero-mini-form') {
+            $focus = 'hero-form';
+        } elseif ($source === 'appointment-modal') {
+            $focus = 'appointments';
         }
+
+        $redirect_url = course_landing_get_redirect_base_url($source);
+        $redirect_url = add_query_arg(
+            array(
+                'signup' => 'success',
+                'focus'  => $focus,
+                'origin' => $source,
+            ),
+            $redirect_url
+        );
+
+        $anchor = '';
+        if ($focus === 'hero-form') {
+            $anchor = '#hero-form';
+        } elseif ($focus === 'appointments') {
+            $anchor = '#appointments';
+        } else {
+            $anchor = '#contact';
+        }
+
+        if ($anchor) {
+            $redirect_url .= $anchor;
+        }
+
         wp_safe_redirect($redirect_url);
         exit;
     }

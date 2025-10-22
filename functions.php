@@ -27,6 +27,14 @@ function twentytwentyfive_child_register_assets() {
         array(),
         wp_get_theme()->get('Version')
     );
+
+    wp_register_script(
+        'twentytwentyfive-child-course-landing',
+        get_stylesheet_directory_uri() . '/assets/js/course-landing.js',
+        array(),
+        wp_get_theme()->get('Version'),
+        true
+    );
 }
 add_action('wp_enqueue_scripts', 'twentytwentyfive_child_register_assets');
 
@@ -203,6 +211,7 @@ function twentytwentyfive_child_maybe_enqueue_course_landing($posts) {
 
     if ($shortcode_found) {
         wp_enqueue_style('twentytwentyfive-child-course-landing');
+        wp_enqueue_script('twentytwentyfive-child-course-landing');
     }
 
     return $posts;
