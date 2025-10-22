@@ -350,7 +350,8 @@ function course_landing_shortcode($atts) {
                                     <?php if ($join_link) : ?>
                                         <a href="<?php echo esc_url($join_link); ?>" target="_blank" rel="noopener" class="btn-primary">להצטרפות למפגש</a>
                                     <?php else : ?>
-                                        <a href="#contact" class="btn-secondary">תאמו איתנו בטופס</a>
+                                        <button class="btn-primary" data-appointment-title="<?php echo esc_attr(get_the_title()); ?>" data-appointment-time="<?php echo esc_attr($date_label . ($time_label ? ' · ' . $time_label : '')); ?>" data-open-modal="appointment">לתאם שיחה</button>
+                                        <a href="#contact" class="btn-secondary">להשאיר פרטים מלאים</a>
                                     <?php endif; ?>
                                 </div>
                             </article>
@@ -379,6 +380,15 @@ function course_landing_shortcode($atts) {
             </div>
         </section>
 
+        <div class="appointment-modal" data-modal="appointment" hidden>
+            <div class="appointment-modal-overlay" data-close-modal="appointment"></div>
+            <div class="appointment-modal-content">
+                <button class="appointment-modal-close" data-close-modal="appointment" aria-label="סגירת חלון">×</button>
+                <h3>תיאום שיחה למפגש</h3>
+                <p class="appointment-modal-summary"></p>
+                <?php display_appointment_modal_form(); ?>
+            </div>
+        </div>
     </div>
     <?php
     wp_reset_postdata();

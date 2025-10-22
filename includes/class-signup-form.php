@@ -106,4 +106,30 @@ function display_hero_lead_form() {
     </form>
     <?php
 }
+
+function display_appointment_modal_form() {
+    ?>
+    <form method="post" action="" class="appointment-modal-form">
+        <div class="form-group">
+            <label for="modal-name">שם מלא</label>
+            <input type="text" id="modal-name" name="name" placeholder="שם מלא" required>
+        </div>
+        <div class="form-group">
+            <label for="modal-email">אימייל</label>
+            <input type="email" id="modal-email" name="email" placeholder="name@example.com" required>
+        </div>
+        <div class="form-group">
+            <label for="modal-phone">טלפון</label>
+            <input type="tel" id="modal-phone" name="phone" placeholder="050-0000000" required>
+        </div>
+        <input type="hidden" id="appointment-modal-notes" name="notes" value="">
+        <input type="hidden" name="form_source" value="appointment-modal">
+        <div class="honeypot" style="display:none;">
+            <label for="modal-website">Website (leave empty):</label>
+            <input type="text" id="modal-website" name="website">
+        </div>
+        <button type="submit" name="signup_submit" class="appointment-modal-submit">לתאם שיחה</button>
+    </form>
+    <?php
+}
 ?>
